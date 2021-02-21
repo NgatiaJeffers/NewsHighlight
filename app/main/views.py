@@ -14,3 +14,14 @@ def index():
     title = 'Falling Sky News'
 
     return render_template('index.html', source = all_sources, title = title)
+
+
+@main.route('/source/<source>')
+def news_headlines(source):
+    '''
+    Function pulls/gets the top and breakng news
+    '''
+
+    title = "Falling Sky News"
+    news_headlines = get_all_headlines(source)
+    return render_template('articles.html', title = title, headlines = news_headlines)

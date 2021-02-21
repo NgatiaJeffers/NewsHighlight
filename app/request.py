@@ -1,6 +1,6 @@
 from .main import main
 import urllib.request, json
-from .models import Everything
+from .models import Everything, Tech, Source, Headlines
 
 # # Getting the API KEY
 api_key = None
@@ -53,7 +53,46 @@ def process_source_data(source_list):
         name = item.get('name')
         url = item.get('url')
         description = item.get('description')
-        new_source = Source(id, name, url, description)
+        published = item.get('published')
+        new_source = Source(id, name, url, description, published)
         source_processed.append(new_source)
 
     return source_processed
+
+def get_news_headlines(source):
+    '''
+    Function retrieves top stories/headlines news and passing the json as the
+    data intended
+    '''
+
+    top_stories_url = top_headlines_url.format(source, api_key)
+
+    with urllib.request.urlopen(top_stories_url) as url:
+        headline_data = url.read()
+        headline_response = json.loads(headline_data)
+        headline_results = None
+
+        if headline_response['article']:
+            headline_items = headline_response['article']
+            headline_results = process_headline_data(headline_items)
+        
+    return headline_results
+
+
+def process_headline_data(headline_list):
+    '''
+    Function Converts data to the class in the model
+    '''
+
+    top_story = []
+    for item in headline_list:
+        author = item.get('author')
+        title = item.get('title')
+        description = item.get('description')
+        url = item.get('url')
+        published = item.get('published')
+        new_headline = Headlines(author, title, url, description, published)
+        top_story.append(new_headline)
+
+    return top_story
+        
