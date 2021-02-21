@@ -13,7 +13,7 @@ def configure_request(app):
     global api_key, source_url, top_headlines_url, everything_url, tech_url
     api_key = app.config['NEWS_API_KEY']
     source_url = app.config['SOURCE_API_BASE_URL']
-    top_headlines_url = app.congig['TOP_HEADLINES_API_BASE_URL']
+    top_headlines_url = app.config['TOP_HEADLINES_API_BASE_URL']
     everything_url = app.config['EVERYTHING_API_BASE_URL']
     tech_url = app.config['TECH_API_BASE_URL']
 
@@ -32,11 +32,11 @@ def get_news_source():
         source_response = json.loads(source_data)
         source_results = None
 
-        if source_response ['source']:
-            source_items = source_response['source']
+        if source_response ['sources']:
+            source_items = source_response['sources']
             source_results = process_source_data(source_items)
 
-        return source_results
+    return source_results
 
 
 def process_source_data(source_list):
@@ -73,7 +73,7 @@ def get_news_headlines(source):
         headline_results = None
 
         if headline_response['article']:
-            headline_items = headline_response['article']
+            headline_items = headline_response['articles']
             headline_results = process_headline_data(headline_items)
         
     return headline_results
@@ -95,4 +95,41 @@ def process_headline_data(headline_list):
         top_story.append(new_headline)
 
     return top_story
+
+
+def get_everything():
+    '''
+    Retrives every news and passing it as json object
+    '''
+    every_news = everything_url.format(api_key)
+
+    with urllib.request.urlopen(every_news) as url:
+        everything_data = url.read()
+        everything_response = json.loads(everything_data)
+        everything_results = None
+
+        if everything_response['artcicles']:
+            everything_results_list = everything_response['articles']
+            everything_results = process_everything(everything_results_list)
+            
+    return everything_results
+
+def process_everything(everything_results_list):
+        '''
+        Function Converts data to the class in the Everything class model
+        '''
+        everything_news_results = []
+        for item in everything_results_list:
+            author = item.get('author')
+            title = item.get('title')
+            description = item.get('description')
+            url = item.get('url')
+            urlToImage = item.get('urlToImage')
+            published = item.get('published')
+
+            everything_object = Everything(author, title, description, url, urlToImage, publishedAt)
+            everything_news_results.append(everything_object)
         
+        return everything_news_results
+
+
