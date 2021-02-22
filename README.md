@@ -38,7 +38,7 @@ News e.t.c ---------------|| A read more button which directs
 
 - git clone (`https://github.com/NgatiaJeffers/NewsHighlight.git`)
 - cd NewsHighlight
-- python3 ./start.sh
+- Running (`./start.sh`)
 
 ## Contribution
 
