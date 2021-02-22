@@ -90,8 +90,9 @@ def process_headline_data(headline_list):
         title = item.get('title')
         description = item.get('description')
         url = item.get('url')
+        urlToImage = item.get('urlToImage')
         published = item.get('published')
-        new_headline = Headlines(author, title, url, description, published)
+        new_headline = Headlines(author, title, url, urlToImage, description, published)
         top_story.append(new_headline)
 
     return top_story
@@ -118,7 +119,7 @@ def process_everything(everything_results_list):
         '''
         Function Converts data to the class in the Everything class model
         '''
-        everything_news_results = []
+        everything_results = []
         for item in everything_results_list:
             author = item.get('author')
             title = item.get('title')
@@ -127,9 +128,44 @@ def process_everything(everything_results_list):
             urlToImage = item.get('urlToImage')
             published = item.get('published')
 
-            everything_object = Everything(author, title, description, url, urlToImage, publishedAt)
-            everything_news_results.append(everything_object)
+            everything_object = Everything(author, title, description, url, urlToImage, published)
+            everything_results.append(everything_object)
         
-        return everything_news_results
+        return everything_results
 
 
+def tech_headlines():
+    '''
+    Function that gets the Tech News.
+    '''
+
+    tech_news_url = tech_url.format(api_key)
+
+    with urllib.request.urlopen(tech_news_url) as url:
+        tech_data = url.read()
+        tech_response = json.loads(tech_data)
+        tech_results = None
+        
+        if tech_response['articles']:
+            tech_results_list = tech_response['articles']
+            tech_results = process_tech_results(tech_results_list)
+
+    return tech_results
+
+def process_tech_results(tech_results_list):
+    '''
+    Function that will convert the data being pulled to a json file
+    '''
+    tech_results = []
+    for item in tech_results_list:
+        author = item.get('author')
+        title = item.get('title')
+        description = item.get('description')
+        url = item.get('url')
+        urlToImage = item.get('urlToImage')
+        published = item.get('published')
+
+        tech_object = Tech(autho, title, description, url, urlToImage, published)
+        tech_results.append(tech_object)
+
+    return tech_results

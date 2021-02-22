@@ -13,3 +13,7 @@ html {
     background-color: #F4F2F3;
     font-family: "Poppins", Gotham Rounded, sans-serif !important;
 }
+
+.content {
+    margin-top: 3em;
+}
