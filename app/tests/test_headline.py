@@ -3,7 +3,7 @@ from app.models import Headlines
 
 class HeadlinesTest(unittest.TestCase):
     '''
-    Test class to test the behavior of the source class
+    Test class to test the behavior of the Headline class
     '''
 
     def setUp(self):
@@ -21,6 +21,9 @@ class HeadlinesTest(unittest.TestCase):
     def test_init_author(self):
         self.assertEqual(self.new_headline.author, 'bbc news')
 
+    def test_init_title(self):
+        self.assertEqual(self.new_headline.title, 'Hello World!')
+
     def test_init_url(self):
         self.assertEqual(self.new_headline.url, 'https://www.google.io/img/Mountain')
 
@@ -35,5 +38,7 @@ class HeadlinesTest(unittest.TestCase):
 
     def test_init_published(self):
         self.assertEqual(self.new_headline.published, 'Google')
+
+        
 if __name__ == '__main__':
     unittest.main()

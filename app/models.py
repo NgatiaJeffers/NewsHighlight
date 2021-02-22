@@ -15,25 +15,25 @@ class Everything:
     Class That defines the news Objects
     '''
 
-    def __init__(self, author, title, description, url, urlToImage, published):
+    def __init__(self, author, title, description, url, urlToImage, publishedAt):
         self.author = author
         self.title = title
         self.description = description
         self.url = url
         self.urlToImage = urlToImage
-        self.published = published
+        self.publishedAt = publishedAt
 
 class Headlines:
     '''
     Class That defines the headlines object
     '''
-    def __init__(self, author, title, description, url, urlToImage, published):
+    def __init__(self, author, title, description, url, urlToImage, publishedAt):
         self.author = author
         self.title = title
         self.description = description
         self.url = url
         self.urlToImage = urlToImage
-        self.published = published
+        self.publishedAt = publishedAt
 
 
 class Tech:
@@ -41,10 +41,10 @@ class Tech:
     Class that defines the Tech object
     """
     
-    def __init__(self,author, title, description, url, urlToImage, published):
+    def __init__(self,author, title, description, url, urlToImage, publishedAt):
         self.author = author
         self.title = title
         self.description = description
         self.url = url
         self.urlToImage = urlToImage
-        self.published = published
+        self.publishedAt = publishedAt
