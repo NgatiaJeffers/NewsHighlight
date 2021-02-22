@@ -11,11 +11,11 @@ def index():
     '''
 
     all_sources = get_news_source()
-    everything_news = get_everything()
+    all_news = get_everything()
     tech_stories = tech_headlines()
     title = 'Falling Sky News'
 
-    return render_template('index.html', sources = all_sources, others = everything_news, tech = tech_stories, title = title)
+    return render_template('index.html', sources = all_sources, others = all_news, tech = tech_stories, title = title)
 
 
 @main.route('/source/<source>')
