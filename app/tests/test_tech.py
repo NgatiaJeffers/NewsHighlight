@@ -1,7 +1,7 @@
 import unittest
 from app.models import Tech
 
-class techTest(unittest.TestCase):
+class TechTest(unittest.TestCase):
     '''
     Test class to test the behavior of the Tech class
     '''
