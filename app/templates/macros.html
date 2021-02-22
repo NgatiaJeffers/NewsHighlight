@@ -11,7 +11,7 @@
 {% for item in news_items %}
 {% if item.urlToImage %}
 <div class="view overlay z-depth-1-half mt-3">
-    <img src="{{item.urlToImage}}" class="img-fluid img-responsive">
+    <img src="{{item.urlToImage}}" class="img-fluid img-responsive" style="width: 100%;">
     <a href="#!">
         <div class="mask rgba-white-slight"></div>
     </a>
@@ -31,7 +31,7 @@
 {% for item in news_items %}
 {% if item.urlToImage %}
 <div class="view overlay z-depth-1-half">
-    <img src="{{item.urlToImage}}" class="img-fluid img-responsive">
+    <img src="{{item.urlToImage}}" class="img-fluid img-responsive" style="width: 100%;">
     <a href="#!">
         <div class="mask rgba-white-slight"></div>
     </a>
