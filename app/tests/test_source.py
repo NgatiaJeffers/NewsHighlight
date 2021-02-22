@@ -10,7 +10,7 @@ class SourceTest(unittest.TestCase):
         '''
         Set up method that will run before every Test
         '''
-        self.new_source = Sources('1', 'https://ww.bbc.co.uk', 'BBC News', 'A news to test our source', 'Uk')
+        self.new_source = Sources('1', 'BBC News', 'https://ww.bbc.co.uk', 'Uk', 'A news to test our source')
 
     def tearDown(self):
         self.new_source = None
@@ -21,11 +21,11 @@ class SourceTest(unittest.TestCase):
     def test_init_id(self):
         self.assertEqual(self.new_source.id, '1')
 
-    def test_init_url(self):
-        self.assertEqual(self.new_source.url, 'https://ww.bbc.co.uk')
-
     def test_init_name(self):
         self.assertEqual(self.new_source.name, 'BBC News')
+
+    def test_init_url(self):
+        self.assertEqual(self.new_source.url, 'https://ww.bbc.co.uk')
 
     def test_init_county(self):
         self.assertEqual(self.new_source.country, 'UK')
