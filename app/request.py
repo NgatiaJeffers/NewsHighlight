@@ -92,7 +92,7 @@ def process_headline_data(headline_list):
         url = item.get('url')
         urlToImage = item.get('urlToImage')
         published = item.get('published')
-        new_headline = Headlines(author, title, url, urlToImage, description, published)
+        new_headline = Headlines(author, title,  description, url, urlToImage, published)
         top_story.append(new_headline)
 
     return top_story
