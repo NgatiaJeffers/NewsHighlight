@@ -1,47 +1,36 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macro %}
 
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
+{% endblock %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/boostrap.min.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
     <title>{{ title }}</title>
 </head>
 <body>
     {% block content %}
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="container col-md-12">
-            <div class="sidebar-sticky">
-                <nav class="d-none d-md-block sidebar" style="background-color: #fff">
-                    <h1 class="text-muted" style="color:grey;">News Sources</h1>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="sidebar sticky-sidebar col-md-2">
+                <nav class="sidebar d-none d-md-block">
+                    <h6 class="text-muted">your best sources</h6>
                     <hr>
                     {{ macro.displayNewsSources(sources) }}
                 </nav>
             </div>
-        </div>
-        <!--Grid column-->
-        <div class="col-lg-5 col-md-12 mb-12">
-            <h1 class="my-1">Wall Street Journal Articles</h1>
-            <hr class="my-3">
-            {{ macro.displayNews(others) }}
+
 
         </div>
-        <!-- <div class="col-lg-5 col-md-12 mb-12">
-            <h1 class="my-1">Top headlines in the US</h1>
-            <hr class="my-3">
-            {{ macro.displayNews(business_headliness) }}
-        </div> -->
-
     </div>
-</div>
-
-{% endblock %}
-
+    {% endblock %}
 </body>
 </html>
