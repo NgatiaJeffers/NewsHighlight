@@ -1,6 +1,6 @@
 from flask import render_template, request, url_for
 from . import main
-from ..request import get_news_source, get_news_headlines
+from ..request import get_news_source, get_news_headlines, get_everything, tech_headlines
 
 
 
@@ -11,9 +11,11 @@ def index():
     '''
 
     all_sources = get_news_source()
+    everything_news = get_everything()
+    tech_stories = tech_headlines()
     title = 'Falling Sky News'
 
-    return render_template('index.html', sources = all_sources, title = title)
+    return render_template('index.html', sources = all_sources, others = everything_news, tech = tech_stories, title = title)
 
 
 @main.route('/source/<source>')

@@ -72,7 +72,7 @@ def get_news_headlines(source):
         headline_response = json.loads(headline_data)
         headline_results = None
 
-        if headline_response['article']:
+        if headline_response['articles']:
             headline_items = headline_response['articles']
             headline_results = process_headline_data(headline_items)
         
@@ -109,7 +109,7 @@ def get_everything():
         everything_response = json.loads(everything_data)
         everything_results = None
 
-        if everything_response['artcicles']:
+        if everything_response['articles']:
             everything_results_list = everything_response['articles']
             everything_results = process_everything(everything_results_list)
             
@@ -165,7 +165,7 @@ def process_tech_results(tech_results_list):
         urlToImage = item.get('urlToImage')
         published = item.get('published')
 
-        tech_object = Tech(autho, title, description, url, urlToImage, published)
+        tech_object = Tech(author, title, description, url, urlToImage, published)
         tech_results.append(tech_object)
 
     return tech_results
