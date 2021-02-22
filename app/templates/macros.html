@@ -11,15 +11,15 @@
 {% for item in news_items %}
 {% if item.urlToImage %}
 <div class="view overlay z-depth-1-half mt-3">
-    <img src="{{item.urlToImage}}" class="img-fluid img-responsive" style="height: 20rem;">
+    <img src="{{item.urlToImage}}" class="img-fluid img-responsive">
     <a href="#!">
         <div class="mask rgba-white-slight"></div>
     </a>
 </div>
-<h4 class="my-4 font-weight-bold">{{item.title|truncate(80)}}</h4>
-<p class="grey-text">{{item.description}}</p>
-<p>by <a><strong>{{item.author}}</strong></a>, {{item.publishedAt}} </p>
-<a href="{{item.url}}" class="btn btn-primary btn-md">Read more</a>
+    <h4 class="my-4 font-weight-bold">{{item.title|truncate(80)}}</h4>
+    <p class="grey-text">{{item.description}}</p>
+    <p>by <a><strong>{{item.author}}</strong></a></p>
+    <a href="{{item.url}}" class="btn btn-primary btn-md">Read more</a>
 
 {% endif %}
 {% endfor %}
@@ -31,14 +31,14 @@
 {% for item in news_items %}
 {% if item.urlToImage %}
 <div class="view overlay z-depth-1-half">
-    <img src="{{item.urlToImage}}" class="img-fluid img-responsive" style="height: 20rem;">
+    <img src="{{item.urlToImage}}" class="img-fluid img-responsive">
     <a href="#!">
         <div class="mask rgba-white-slight"></div>
     </a>
 </div>
 <h4 class="my-4 font-weight-bold">{{item.title|truncate(80)}}</h4>
 <p class="grey-text">{{item.description}}</p>
-<p>by <a><strong>{{item.author}}</strong></a>, {{item.publishedAt}} </p>
+<p>by <a><strong>{{item.author}}</strong></a></p>
 <a href="{{item.url}}" class="btn btn-primary btn-md">Read more</a>
 
 {% endif %}
