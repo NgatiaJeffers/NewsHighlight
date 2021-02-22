@@ -52,9 +52,9 @@ def process_source_data(source_list):
         id = item.get('id')
         name = item.get('name')
         url = item.get('url')
+        country = item.get('country')
         description = item.get('description')
-        published = item.get('published')
-        new_source = Source(id, name, url, description, published)
+        new_source = Source(id, name, url, country, description)
         source_processed.append(new_source)
 
     return source_processed
@@ -91,8 +91,8 @@ def process_headline_data(headline_list):
         description = item.get('description')
         url = item.get('url')
         urlToImage = item.get('urlToImage')
-        published = item.get('published')
-        new_headline = Headlines(author, title,  description, url, urlToImage, published)
+        publishedAt = item.get('publishedAt')
+        new_headline = Headlines(author, title,  description, url, urlToImage, publishedAt)
         top_story.append(new_headline)
 
     return top_story
@@ -126,9 +126,9 @@ def process_everything(everything_results_list):
             description = item.get('description')
             url = item.get('url')
             urlToImage = item.get('urlToImage')
-            published = item.get('published')
+            publishedAt = item.get('publishedAt')
 
-            everything_object = Everything(author, title, description, url, urlToImage, published)
+            everything_object = Everything(author, title, description, url, urlToImage, publishedAt)
             everything_results.append(everything_object)
         
         return everything_results
@@ -163,9 +163,9 @@ def process_tech_results(tech_results_list):
         description = item.get('description')
         url = item.get('url')
         urlToImage = item.get('urlToImage')
-        published = item.get('published')
+        publishedAt = item.get('publishedAt')
 
-        tech_object = Tech(author, title, description, url, urlToImage, published)
+        tech_object = Tech(author, title, description, url, urlToImage, publishedAt)
         tech_results.append(tech_object)
 
     return tech_results

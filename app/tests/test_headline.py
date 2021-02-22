@@ -36,8 +36,8 @@ class HeadlinesTest(unittest.TestCase):
     def test_init_description(self):
         self.assertEqual(self.new_headline.description, 'A news to test our source')
 
-    def test_init_published(self):
-        self.assertEqual(self.new_headline.published, 'Google')
+    def test_init_publishedAt(self):
+        self.assertEqual(self.new_headline.publishedAt, '22-02-2020')
 
         
 if __name__ == '__main__':

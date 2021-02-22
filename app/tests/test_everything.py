@@ -36,7 +36,7 @@ class EverythingTest(unittest.TestCase):
     def test_init_description(self):
         self.assertEqual(self.new_everything.description, 'A news to test our source')
 
-    def test_init_published(self):
+    def test_init_publishedAt(self):
         self.assertEqual(self.new_everything.publishedAt, '22-02-2021')
 
         
